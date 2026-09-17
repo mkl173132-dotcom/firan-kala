@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>فیران کالا | فروشگاه آنلاین</title>
+
+    <meta name="description"
+          content="فیران کالا - فروشگاه آنلاین محصولات دیجیتال">
+
+    <link rel="stylesheet" href="style.css">
+
+<style>
+/* ================= ربات فیران کالا ================= */
+.firan-bot-button{
+    position:fixed;
+    left:22px;
+    bottom:22px;
+    width:62px;
+    height:62px;
+    border:0;
+    border-radius:50%;
+    background:#111827;
+    color:#fff;
+    font-size:28px;
+    cursor:pointer;
+    box-shadow:0 10px 30px rgba(0,0,0,.22);
+    z-index:9999;
+}
+.firan-bot-button:hover{transform:scale(1.05)}
+.firan-bot-window{
+    position:fixed;
+    left:22px;
+    bottom:96px;
+    width:340px;
+    max-width:calc(100vw - 30px);
+    height:470px;
+    max-height:70vh;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 18px 55px rgba(0,0,0,.25);
+    overflow:hidden;
+    display:none;
+    flex-direction:column;
+    z-index:9998;
+    direction:rtl;
+    border:1px solid #e5e7eb;
+}
+.firan-bot-window.open{display:flex}
+.firan-bot-header{
+    background:#111827;
+    color:#fff;
+    padding:15px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.firan-bot-title{font-weight:700;font-size:16px}
+.firan-bot-close{
+    background:transparent;border:0;color:#fff;font-size:24px;cursor:pointer;line-height:1
+}
+.firan-bot-messages{
+    flex:1;
+    overflow-y:auto;
+    padding:14px;
+    background:#f8fafc;
+}
+.firan-bot-message{
+    margin:8px 0;
+    padding:10px 12px;
+    border-radius:14px;
+    max-width:84%;
+    line-height:1.7;
+    font-size:14px;
+    white-space:pre-wrap;
+}
+.firan-bot-message.bot{background:#fff;border:1px solid #e5e7eb;margin-left:auto}
+.firan-bot-message.user{background:#111827;color:#fff;margin-right:auto}
+.firan-bot-form{
+    display:flex;
+    gap:8px;
+    padding:10px;
+    background:#fff;
+    border-top:1px solid #e5e7eb;
+}
+.firan-bot-input{
+    flex:1;
+    min-width:0;
+    border:1px solid #d1d5db;
+    border-radius:12px;
+    padding:10px 12px;
+    outline:none;
+    font-family:inherit;
+}
+.firan-bot-send{
+    border:0;
+    border-radius:12px;
+    padding:0 14px;
+    background:#111827;
+    color:#fff;
+    cursor:pointer;
+    font-family:inherit;
+}
+@media(max-width:480px){
+    .firan-bot-button{left:15px;bottom:15px}
+    .firan-bot-window{left:15px;bottom:88px;width:calc(100vw - 30px);height:62vh}
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- ================= هدر ================= -->
+<header class="site-header">
+
+    <div class="container header-inner">
+
+        <a href="index.html" class="logo">
+            <span class="logo-icon">🛍️</span>
+            <span>فیران کالا</span>
+        </a>
+
+        <nav class="main-nav">
+
+            <a href="index.html" class="active">
+                خانه
+            </a>
+
+            <a href="#products">
+                محصولات
+            </a>
+
+            <a href="#categories">
+                دسته‌بندی‌ها
+            </a>
+
+            <a href="#about">
+                درباره ما
+            </a>
+
+            <a href="#cart" class="cart-link">
+                🛒 سبد خرید
+                <span id="cartCount" class="cart-count">0</span>
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- ================= بخش اصلی ================= -->
+<main>
+
+    <!-- هیرو -->
+    <section class="hero">
+
+        <div class="container hero-content">
+
+            <div class="hero-text">
+
+                <span class="hero-label">
+                    ✨ فروشگاه دیجیتال فیران
+                </span>
+
+                <h1>
+                    محصولات دیجیتال
+                    <br>
+                    برای زندگی مدرن
+                </h1>
+
+                <p>
+                    جدیدترین محصولات دیجیتال فیران کالا را
+                    مشاهده و به‌صورت آنلاین سفارش دهید.
+                </p>
+
+                <a href="#products" class="hero-button">
+                    مشاهده محصولات
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= جستجو ================= -->
+    <section class="search-section">
+
+        <div class="container">
+
+            <div class="search-box">
+
+                <span class="search-icon">🔎</span>
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="جستجوی محصول..."
+                    autocomplete="off"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= دسته‌بندی ================= -->
+    <section id="categories" class="categories-section">
+
+        <div class="container">
+
+            <h2>
+                دسته‌بندی محصولات
+            </h2>
+
+            <div class="category-buttons">
+
+                <button
+                    type="button"
+                    class="category-btn active"
+                    data-category="all">
+                    همه محصولات
+                </button>
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="mobile">
+                    📱 موبایل
+                </button>
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="audio">
+                    🎧 صوتی
+                </button>
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="computer">
+                    💻 کامپیوتر
+                </button>
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="watch">
+                    ⌚ ساعت هوشمند
+                </button>
+
+                <button
+                    type="button"
+                    class="category-btn"
+                    data-category="accessories">
+                    🔌 لوازم جانبی
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= محصولات ================= -->
+    <section id="products" class="products-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-label">
+                        محصولات فیران
+                    </span>
+
+                    <h2>
+                        محصولات منتخب
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div id="productsGrid" class="products-grid">
+
+
+                <!-- محصول ۱ -->
+                <article
+                    class="product-card"
+                    data-name="گوشی هوشمند Firan X1"
+                    data-category="mobile">
+
+                    <div class="product-image-wrapper">
+
+                        <span class="discount-badge">
+                            ۱۰٪ تخفیف
+                        </span>
+
+                        <a href="product.html?id=phone">
+
+                            <img
+                                src="images/firan-phone.jpg"
+                                alt="گوشی هوشمند Firan X1"
+                                class="product-image"
+                                onerror="this.src='images/firan-phone.png'"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            موبایل
+                        </span>
+
+                        <h3>
+                            گوشی هوشمند Firan X1
+                        </h3>
+
+                        <p class="product-description">
+                            گوشی هوشمند مدرن فیران با طراحی زیبا
+                        </p>
+
+                        <div class="price-area">
+
+                            <span class="old-price">
+                                ۱۸٬۹۰۰٬۰۰۰ تومان
+                            </span>
+
+                            <strong class="product-price">
+                                ۱۷٬۰۱۰٬۰۰۰ تومان
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-to-cart-btn"
+                            data-id="phone">
+
+                            🛒 افزودن به سبد خرید
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- محصول ۲ -->
+                <article
+                    class="product-card"
+                    data-name="هدفون بی‌سیم Firan AirSound"
+                    data-category="audio">
+
+                    <div class="product-image-wrapper">
+
+                        <span class="discount-badge">
+                            ۱۲٪ تخفیف
+                        </span>
+
+                        <a href="product.html?id=headphones">
+
+                            <img
+                                src="images/firan-headphones.jpg"
+                                alt="هدفون بی‌سیم Firan AirSound"
+                                class="product-image"
+                                onerror="this.src='images/firan-headphones.png'"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            صوتی
+                        </span>
+
+                        <h3>
+                            هدفون بی‌سیم Firan AirSound
+                        </h3>
+
+                        <p class="product-description">
+                            هدفون بی‌سیم با طراحی راحت
+                        </p>
+
+                        <div class="price-area">
+
+                            <span class="old-price">
+                                ۲٬۴۹۰٬۰۰۰ تومان
+                            </span>
+
+                            <strong class="product-price">
+                                ۲٬۱۹۱٬۲۰۰ تومان
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-to-cart-btn"
+                            data-id="headphones">
+
+                            🛒 افزودن به سبد خرید
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- محصول ۳ -->
+                <article
+                    class="product-card"
+                    data-name="لپ‌تاپ FiranBook 15"
+                    data-category="computer">
+
+                    <div class="product-image-wrapper">
+
+                        <span class="discount-badge">
+                            ۸٪ تخفیف
+                        </span>
+
+                        <a href="product.html?id=laptop">
+
+                            <img
+                                src="images/firan-laptop.jpg"
+                                alt="لپ‌تاپ FiranBook 15"
+                                class="product-image"
+                                onerror="this.src='images/firan-laptop.png'"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            کامپیوتر
+                        </span>
+
+                        <h3>
+                            لپ‌تاپ FiranBook 15
+                        </h3>
+
+                        <p class="product-description">
+                            لپ‌تاپ مناسب کار و استفاده روزمره
+                        </p>
+
+                        <div class="price-area">
+
+                            <span class="old-price">
+                                ۳۸٬۹۰۰٬۰۰۰ تومان
+                            </span>
+
+                            <strong class="product-price">
+                                ۳۵٬۷۸۸٬۰۰۰ تومان
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-to-cart-btn"
+                            data-id="laptop">
+
+                            🛒 افزودن به سبد خرید
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- محصول ۴ -->
+                <article
+                    class="product-card"
+                    data-name="ساعت هوشمند Firan Watch S2"
+                    data-category="watch">
+
+                    <div class="product-image-wrapper">
+
+                        <span class="discount-badge">
+                            ۱۵٪ تخفیف
+                        </span>
+
+                        <a href="product.html?id=watch">
+
+                            <img
+                                src="images/firan-watch.jpg"
+                                alt="ساعت هوشمند Firan Watch S2"
+                                class="product-image"
+                                onerror="this.src='images/firan-watch.png'"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            ساعت هوشمند
+                        </span>
+
+                        <h3>
+                            ساعت هوشمند Firan Watch S2
+                        </h3>
+
+                        <p class="product-description">
+                            ساعت هوشمند با طراحی مدرن
+                        </p>
+
+                        <div class="price-area">
+
+                            <span class="old-price">
+                                ۳٬۲۹۰٬۰۰۰ تومان
+                            </span>
+
+                            <strong class="product-price">
+                                ۲٬۷۹۶٬۵۰۰ تومان
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-to-cart-btn"
+                            data-id="watch">
+
+                            🛒 افزودن به سبد خرید
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- محصول ۵ -->
+                <article
+                    class="product-card"
+                    data-name="ست موس و کیبورد بی‌سیم Firan Office"
+                    data-category="accessories">
+
+                    <div class="product-image-wrapper">
+
+                        <span class="discount-badge">
+                            ۱۰٪ تخفیف
+                        </span>
+
+                        <a href="product.html?id=keyboard">
+
+                            <img
+                                src="images/firan-keyboard.jpg"
+                                alt="ست موس و کیبورد بی‌سیم Firan Office"
+                                class="product-image"
+                                onerror="this.src='images/firan-keyboard.png'"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            لوازم جانبی
+                        </span>
+
+                        <h3>
+                            ست موس و کیبورد بی‌سیم Firan Office
+                        </h3>
+
+                        <p class="product-description">
+                            ست بی‌سیم مناسب محیط کار
+                        </p>
+
+                        <div class="price-area">
+
+                            <span class="old-price">
+                                ۱٬۴۹۰٬۰۰۰ تومان
+                            </span>
+
+                            <strong class="product-price">
+                                ۱٬۳۴۱٬۰۰۰ تومان
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-to-cart-btn"
+                            data-id="keyboard">
+
+                            🛒 افزودن به سبد خرید
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- محصول ۶ -->
+                <article
+                    class="product-card"
+                    data-name="شارژر سریع Firan Charge 25W"
+                    data-category="accessories">
+
+                    <div class="product-image-wrapper">
+
+                        <span class="discount-badge">
+                            ۱۲٪ تخفیف
+                        </span>
+
+                        <a href="product.html?id=charger">
+
+                            <img
+                                src="images/firan-charger.jpg"
+                                alt="شارژر سریع Firan Charge 25W"
+                                class="product-image"
+                                onerror="this.src='images/firan-charger.png'"
+                            >
+
+                        </a>
+
+                    </div>
+
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            لوازم جانبی
+                        </span>
+
+                        <h3>
+                            شارژر سریع Firan Charge 25W
+                        </h3>
+
+                        <p class="product-description">
+                            شارژر سریع مناسب دستگاه‌های سازگار
+                        </p>
+
+                        <div class="price-area">
+
+                            <span class="old-price">
+                                ۸۹۰٬۰۰۰ تومان
+                            </span>
+
+                            <strong class="product-price">
+                                ۷۸۳٬۲۰۰ تومان
+                            </strong>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            class="add-to-cart-btn"
+                            data-id="charger">
+
+                            🛒 افزودن به سبد خرید
+
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <div id="noProducts" class="no-products" style="display:none;">
+
+                محصولی با این مشخصات پیدا نشد.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= سبد خرید ================= -->
+    <section id="cart" class="cart-section">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        خرید شما
+                    </span>
+
+                    <h2>
+                        🛒 سبد خرید
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div id="cartContent">
+
+                <div id="emptyCart" class="empty-cart">
+
+                    <div class="empty-cart-icon">
+                        🛒
+                    </div>
+
+                    <h3>
+                        سبد خرید شما خالی است
+                    </h3>
+
+                    <p>
+                        برای شروع، یکی از محصولات را به سبد خرید اضافه کنید.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="cartItems"
+                    class="cart-items"
+                    style="display:none;">
+                </div>
+
+
+                <div
+                    id="cartSummary"
+                    class="cart-summary"
+                    style="display:none;">
+
+                    <div class="cart-total-row">
+
+                        <span>
+                            مبلغ قابل پرداخت:
+                        </span>
+
+                        <strong id="cartTotal">
+                            ۰ تومان
+                        </strong>
+
+                    </div>
+
+                    <button
+                        type="button"
+                        id="checkoutButton"
+                        class="checkout-btn">
+
+                        ادامه و ثبت سفارش
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ثبت سفارش ================= -->
+    <section
+        id="checkout"
+        class="checkout-section"
+        style="display:none;">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        تکمیل خرید
+                    </span>
+
+                    <h2>
+                        اطلاعات سفارش
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <form id="checkoutForm" class="checkout-form">
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        نام و نام خانوادگی
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required
+                        placeholder="نام و نام خانوادگی">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerPhone">
+                        شماره موبایل
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone"
+                        required
+                        placeholder="09xxxxxxxxx">
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerAddress">
+                        آدرس
+                    </label>
+
+                    <textarea
+                        id="customerAddress"
+                        required
+                        rows="4"
+                        placeholder="آدرس کامل تحویل سفارش"></textarea>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label>
+                        روش پرداخت
+                    </label>
+
+                    <div class="payment-options">
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="cod"
+                                checked>
+
+                            <span>
+                                💵 پرداخت در محل
+                            </span>
+
+                        </label>
+
+
+                        <label class="payment-option">
+
+                            <input
+                                type="radio"
+                                name="payment"
+                                value="online">
+
+                            <span>
+                                💳 پرداخت آنلاین
+                            </span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-order-btn">
+
+                    ثبت نهایی سفارش
+
+                </button>
+
+            </form>
+
+
+            <div
+                id="orderResult"
+                class="order-result"
+                style="display:none;">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= درباره ما ================= -->
+   <!-- =========================
+     درباره فیران کالا
+========================= -->
+
+<section id="about" class="about-section">
+
+    <div class="container">
+
+        <div class="about-card">
+
+            <span class="section-label">
+                درباره ما
+            </span>
+
+            <h2>
+                فیران کالا؛ خریدی مطمئن، ساده و هوشمند
+            </h2>
+
+            <p class="about-intro">
+                فیران کالا با هدف ایجاد تجربه‌ای ساده و قابل اعتماد
+                برای خرید محصولات دیجیتال راه‌اندازی شده است.
+                ما تلاش می‌کنیم محصولات کاربردی را با اطلاعات شفاف،
+                قیمت مناسب و خدمات قابل اعتماد در اختیار مشتریان قرار دهیم.
+            </p>
+
+
+            <div class="about-grid">
+
+                <div class="about-item">
+                    <div class="about-icon">🛍️</div>
+
+                    <h3>خرید آسان</h3>
+
+                    <p>
+                        محصولات را به‌سادگی مشاهده کنید،
+                        به سبد خرید اضافه کنید و سفارش خود را ثبت کنید.
+                    </p>
+                </div>
+
+
+                <div class="about-item">
+                    <div class="about-icon">💰</div>
+
+                    <h3>قیمت شفاف</h3>
+
+                    <p>
+                        قیمت اصلی و قیمت تخفیف‌خورده محصولات
+                        به‌صورت واضح در سایت نمایش داده می‌شود.
+                    </p>
+                </div>
+
+
+                <div class="about-item">
+                    <div class="about-icon">📦</div>
+
+                    <h3>پیگیری سفارش</h3>
+
+                    <p>
+                        سفارش‌های ثبت‌شده در سیستم ذخیره می‌شوند
+                        و امکان مدیریت وضعیت آن‌ها وجود دارد.
+                    </p>
+                </div>
+
+
+                <div class="about-item">
+                    <div class="about-icon">💬</div>
+
+                    <h3>ارتباط با مشتری</h3>
+
+                    <p>
+                        نظرات مشتریان برای ما ارزشمند است و
+                        به بهبود تجربه خرید کمک می‌کند.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- بنیانگذار -->
+
+            <div class="founder-section">
+
+                <div class="founder-image">
+                    👤علی محرمی
+                </div>
+
+                <div class="founder-content">
+
+                    <span class="founder-label">
+                        بنیانگذار فیران کالا
+                    </span>
+
+                    <h3>
+                        داستان فیران کالا
+                    </h3>
+
+                    <p>
+                        فیران کالا با یک ایده ساده شکل گرفت:
+                        ایجاد فروشگاهی که مشتری بتواند با آرامش،
+                        اطلاعات محصول را بررسی کند و خرید خود را
+                        به‌سادگی انجام دهد.
+                    </p>
+
+                    <p>
+                        هدف ما ساخت یک فروشگاه اینترنتی حرفه‌ای،
+                        شفاف و مشتری‌محور است؛ فروشگاهی که در کنار
+                        تنوع محصولات، تجربه کاربری مناسبی نیز ارائه دهد.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- مأموریت -->
+
+            <div class="mission-box">
+
+                <div class="mission-icon">
+                    🎯
+                </div>
+
+                <div>
+                    <h3>مأموریت ما</h3>
+
+                    <p>
+                        ارائه محصولات دیجیتال کاربردی،
+                        تجربه خرید ساده و ایجاد اعتماد
+                        در تمام مراحل خرید.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <!-- چشم‌انداز -->
+
+            <div class="mission-box">
+
+                <div class="mission-icon">
+                    🚀
+                </div>
+
+                <div>
+                    <h3>چشم‌انداز فیران کالا</h3>
+
+                    <p>
+                        ساخت یک برند قابل اعتماد در حوزه محصولات دیجیتال
+                        و ارائه خدمات بهتر با استفاده از فناوری و تجربه مشتریان.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section> 
+
+</main>
+
+
+<!-- ================= فوتر ================= -->
+<footer class="site-footer">
+
+    <div class="container footer-content">
+
+        <div>
+
+            <div class="footer-logo">
+                🛍️ فیران کالا
+            </div>
+
+            <p>
+                فروشگاه آنلاین محصولات دیجیتال
+            </p>
+
+        </div>
+
+
+        <div class="footer-links">
+
+            <a href="index.html">
+                خانه
+            </a>
+
+            <a href="#products">
+                محصولات
+            </a>
+
+            <a href="#about">
+                درباره ما
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © ۱۴۰۵ فیران کالا - تمامی حقوق محفوظ است.
+
+    </div>
+
+</footer>
+
+
+<!-- فایل جاوااسکریپت -->
+<script src="script.js"></script>
+
+
+<!-- ================= ربات فیران کالا ================= -->
+<button id="firanBotButton" class="firan-bot-button" type="button" aria-label="باز کردن ربات فیران کالا">🤖</button>
+
+<div id="firanBotWindow" class="firan-bot-window" aria-hidden="true">
+    <div class="firan-bot-header">
+        <div class="firan-bot-title">🤖 دستیار فیران کالا</div>
+        <button id="firanBotClose" class="firan-bot-close" type="button" aria-label="بستن">×</button>
+    </div>
+
+    <div id="firanBotMessages" class="firan-bot-messages">
+        <div class="firan-bot-message bot">سلام 👋 من دستیار فیران کالا هستم. درباره قیمت، خرید، ارسال یا محصولات از من بپرسید.</div>
+    </div>
+
+    <form id="firanBotForm" class="firan-bot-form">
+        <input id="firanBotInput" class="firan-bot-input" type="text" placeholder="پیام خود را بنویسید..." autocomplete="off">
+        <button class="firan-bot-send" type="submit">ارسال</button>
+    </form>
+</div>
+
+<script>
+(function () {
+    const button = document.getElementById('firanBotButton');
+    const windowEl = document.getElementById('firanBotWindow');
+    const close = document.getElementById('firanBotClose');
+    const form = document.getElementById('firanBotForm');
+    const input = document.getElementById('firanBotInput');
+    const messages = document.getElementById('firanBotMessages');
+
+    function addMessage(text, type) {
+        const el = document.createElement('div');
+        el.className = 'firan-bot-message ' + type;
+        el.textContent = text;
+        messages.appendChild(el);
+        messages.scrollTop = messages.scrollHeight;
+    }
+
+    button.addEventListener('click', function () {
+        windowEl.classList.add('open');
+        windowEl.setAttribute('aria-hidden', 'false');
+        input.focus();
+    });
+
+    close.addEventListener('click', function () {
+        windowEl.classList.remove('open');
+        windowEl.setAttribute('aria-hidden', 'true');
+    });
+
+    form.addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        const message = input.value.trim();
+        if (!message) return;
+
+        addMessage(message, 'user');
+        input.value = '';
+        input.disabled = true;
+
+        try {
+            const response = await fetch('/api/bot/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            });
+
+            const data = await response.json();
+
+            if (data && data.reply) {
+                addMessage(data.reply, 'bot');
+            } else {
+                addMessage('متأسفانه پاسخی دریافت نشد. دوباره تلاش کنید.', 'bot');
+            }
+        } catch (error) {
+            addMessage('ارتباط با ربات برقرار نشد. لطفاً مطمئن شوید سرور فیران کالا روشن است.', 'bot');
+        } finally {
+            input.disabled = false;
+            input.focus();
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
