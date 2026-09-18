@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mkl173132-dotcom.github.io/firan-kala/sitemap.xml
